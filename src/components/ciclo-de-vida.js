@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-class Reloj extends Component {
+class Timer extends Component {
   constructor(props) {
     super(props);
   }
   render() {
-    return <h3 className="digital-watch">{this.props.hora}</h3>;
+    return <h3 className="timer">{this.props.hora}</h3>;
   }
 }
 
@@ -14,7 +14,7 @@ class Number extends Component {
     super(props);
   }
   render() {
-    return <h3 className="digital-watch">{this.props.number}</h3>;
+    return <h3 className="number">{this.props.number}</h3>;
   }
 }
 
@@ -27,10 +27,10 @@ export default class CicloDeVida extends Component {
       play: false,
       number: "",
     };
-    this.temporizador = null;
+    this.timer = null;
   }
   tictac = () => {
-    this.temporizador = setInterval(() => {
+    this.timer = setInterval(() => {
       this.setState({
         hora: this.state.hora + 1,
       });
@@ -46,7 +46,7 @@ export default class CicloDeVida extends Component {
     });
   };
   detener = () => {
-    clearInterval(this.temporizador);
+    clearInterval(this.timer);
     this.setState({
       play: false,
     });
@@ -68,8 +68,8 @@ export default class CicloDeVida extends Component {
               <img className="play-button-img" src={this.props.playButtonImg} />
             </button>
           )}
-          <div className="watch-container">
-            {this.state.visible && <Reloj hora={this.state.hora} />}
+          <div className="timer-container">
+            {this.state.visible && <Timer hora={this.state.hora} />}
           </div>
         </div>
       </main>
